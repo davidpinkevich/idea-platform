@@ -6,7 +6,21 @@ import { TypeBtnBuying } from "types";
 import styles from "./styles.module.scss";
 
 const ButtonBuying = memo(
-  ({ hover, changeHover, currency, price, rate }: TypeBtnBuying) => {
+  ({
+    hover,
+    changeHover,
+    currency,
+    price,
+    rate,
+    setModal,
+    setModalInfo,
+  }: TypeBtnBuying) => {
+    const newPrice = getPrice(currency, price, rate);
+    const newCurrency = getCurrency(currency);
+    const hadnlerClick = () => {
+      setModal(true);
+      setModalInfo(`${newPrice} ${newCurrency}`);
+    };
     return (
       <div className={styles.button_buying}>
         <div className={styles.buying_wrapper}>
@@ -16,13 +30,14 @@ const ButtonBuying = memo(
           </div>
         </div>
         <Button
+          onClick={hadnlerClick}
           onMouseOver={() => changeHover(hover)}
           onMouseOut={() => changeHover(hover)}
           color="warning"
           variant="contained"
         >
-          Купить за {getPrice(currency, price, rate)}
-          {getCurrency(currency)}
+          Купить за {newPrice}
+          {newCurrency}
         </Button>
       </div>
     );
