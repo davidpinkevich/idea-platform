@@ -16,12 +16,16 @@ export type TypeItem = {
   view: TypeFly;
   rate: TypeGetRate;
   currency: string;
+  setModal: (value: boolean) => void;
+  setModalInfo: (value: string) => void;
 };
 
 export type TypeItems = {
   currency: string;
   rate: TypeGetRate;
   items: Array<TypeFly>;
+  setModal: (value: boolean) => void;
+  setModalInfo: (value: string) => void;
 };
 
 export type TypeBtnBuying = {
@@ -29,6 +33,8 @@ export type TypeBtnBuying = {
   currency: string;
   price: number;
   rate: TypeGetRate;
+  setModal: (value: boolean) => void;
+  setModalInfo: (value: string) => void;
   changeHover: (value: boolean) => void;
 };
 
@@ -52,6 +58,11 @@ export type TypeToggleButtons = {
   load: boolean;
   currency: string;
   setCurrency: (value: string) => void;
+};
+
+export type TypeModal = {
+  info: string;
+  setModal: (value: boolean) => void;
 };
 
 export type TypeSelect = { id: number; label: string; checked: boolean };
