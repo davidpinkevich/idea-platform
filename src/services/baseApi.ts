@@ -6,10 +6,12 @@ const fetchRate = async () => {
       `${BASE_URL}?from=RUB&to=USD,EUR&api_key=${API_KEY}`
     );
     const data = await response.json();
+    if (data.error) {
+      return { USD: 0.01, EUR: 0.106 };
+    }
     return data.results;
   } catch (error) {
-    console.error(error);
-    return null;
+    console.log(error);
   }
 };
 
